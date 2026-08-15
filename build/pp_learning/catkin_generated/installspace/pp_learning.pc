@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/install
+
+Name: pp_learning
+Description: Description of pp_learning
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

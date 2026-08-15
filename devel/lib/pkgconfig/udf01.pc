@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/devel
+
+Name: udf01
+Description: Description of udf01
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

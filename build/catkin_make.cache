@@ -1,0 +1,2 @@
+hello_vscode:helloworld:learn_para:learning_topic:nav_demo:plumbing_pub_sub:pp_learning:servicelea:tf01_static:tf02_dynic:tf03_mul:tf04_test:udf01:urdf02_gazebo
+-DCATKIN_DEVEL_PREFIX=/root/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/root/catkin_ws/install -G Unix Makefiles

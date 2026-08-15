@@ -1,0 +1,26 @@
+<launch>
+   <!-- 设置地图的配置文件 -->
+    <arg name="map" default="nav.yaml" />
+    <!-- 运行地图服务器，并且加载设置的地图-->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find nav_demo)/map/$(arg map)"/>
+    <!-- 启动AMCL节点 -->
+    <include file="$(find nav_demo)/launch/nav04_amcl.launch" />
+
+    <!-- 运行move_base节点 -->
+    <!-- 3. 真正的 move_base（负责全局规划，但速度输出被重映射掉） -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true">
+        <rosparam file="$(find nav_demo)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find nav_demo)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find nav_demo)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find nav_demo)/param/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find nav_demo)/param/base_local_planner_params.yaml" command="load" />
+    
+        <remap from="cmd_vel" to="dummy_cmd_vel"/>
+    </node>
+
+    <!-- 4. 你的导航节点（已经修改为订阅 /plan，不再自己生成路径） -->
+    <node pkg="pp_learning" type="nav_pure_pursuit" name="my_controller" output="screen"/>
+    <node pkg="rviz" type="rviz" name="rviz" />
+    <node pkg="joint_state_publisher" name="joint_state_publisher" type="joint_state_publisher" />
+    <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" />
+</launch>

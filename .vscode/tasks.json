@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "catkin_make:debug",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "source /opt/ros/noetic/setup.bash && catkin_make"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

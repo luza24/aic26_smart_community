@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/install
+
+Name: tf03_mul
+Description: Description of tf03_mul
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
