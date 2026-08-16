@@ -137,6 +137,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/pp_learning_node.cpp)
  add_executable(simple_pure_pursuit src/simple_pure_pursuit.cpp)
  add_executable(nav_pure_pursuit src/nav_pure_pursuit.cpp)
+ add_executable(test815 src/test815.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -154,6 +155,7 @@ include_directories(
 # )
 target_link_libraries(simple_pure_pursuit ${catkin_LIBRARIES})
 target_link_libraries(nav_pure_pursuit ${catkin_LIBRARIES})
+target_link_libraries(test815 ${catkin_LIBRARIES})
 
 #############
 ## Install ##

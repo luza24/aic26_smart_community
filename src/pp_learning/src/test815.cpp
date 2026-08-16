@@ -172,7 +172,7 @@ private:
                 target.y = p1.y + ratio * (p2.y - p1.y);
                 target.theta = 0;
 
-                //  检查目标点是否在机器人前方
+                // ★ 检查目标点是否在机器人前方
                 double lx, ly;
                 transformToRobot(target, lx, ly);
                 if (lx > 0.2) {  // 前方且有足够距离
@@ -245,43 +245,32 @@ private:
     }
 
     void applyObstacleAvoidance(geometry_msgs::Twist& cmd) {
-        if (front_clearance_ < emergency_distance_) {
-            cmd.linear.x = 0.02;
-            double tiny_angular = 0.15;               
-    if (left_clearance_ > right_clearance_+0.05) 
-        cmd.angular.z = tiny_angular;         // 左转
-    else 
-        cmd.angular.z = -tiny_angular;    
-            ROS_WARN_THROTTLE(1, "Emergency Stop! Front: %.2f", front_clearance_);
-            return;
-        }
+    // 只有在前方有障碍时才介入
+    if (front_clearance_ < safety_distance_) {
+        // 1. 减速但不停车：线性速度按比例降低，但不低于最小速度
+        double ratio = std::min(1.0, front_clearance_ / safety_distance_);
+        cmd.linear.x = std::max(min_linear_vel_, cmd.linear.x * ratio);
 
-        if (front_clearance_ < safety_distance_) {
-            double scale = (front_clearance_ / safety_distance_);
-            cmd.linear.x = cmd.linear.x * std::min(1.0, scale * 0.8 + 0.2);
+        // 2. 选择转向方向：比较左右净空，差距较大时更新方向（滞回）
+        double gap = left_clearance_ - right_clearance_;
+        if (gap > 0.15) 
+            turn_direction_ = 1;   // 左边更宽，左转
+        else if (gap < -0.15) 
+            turn_direction_ = -1;  // 右边更宽，右转
+        // 否则保持上次方向，避免左右摇摆
 
-            double left_gap = left_clearance_;
-            double right_gap = right_clearance_;
-            
-            if (left_gap > right_gap) {
-                cmd.angular.z = turn_force_ * 0.6;
-            } else {
-                cmd.angular.z = -turn_force_ * 0.6;
-            }
-            if (std::abs(cmd.angular.z) < 0.3) {
-                cmd.angular.z = (left_gap > right_gap) ? 0.5 : -0.5;
-            }
-            ROS_DEBUG("Avoiding: front=%.2f, turn=%.2f", front_clearance_, cmd.angular.z);
-        }
-        
-        if (left_clearance_ < safety_distance_ * 0.3) {
-            cmd.angular.z = -0.5;
-            cmd.linear.x = cmd.linear.x * 0.8;
-        } else if (right_clearance_ < safety_distance_ * 0.3) {
-            cmd.angular.z = 0.5;
-            cmd.linear.x = cmd.linear.x * 0.8;
-        }
+        // 3. 施加转向：固定角速度，方向由 turn_direction_ 决定
+        double angular_magnitude = 0.5;   // 可根据需要调整，单位 rad/s
+        cmd.angular.z = turn_direction_ * angular_magnitude;
+
+        // 限幅（确保不超出最大角速度）
+        if (cmd.angular.z > max_angular_vel_) cmd.angular.z = max_angular_vel_;
+        if (cmd.angular.z < -max_angular_vel_) cmd.angular.z = -max_angular_vel_;
+
+        ROS_DEBUG_THROTTLE(1, "Avoiding: front=%.2f, turn=%.2f", front_clearance_, cmd.angular.z);
     }
+    // 如果前方无障碍，则不做任何修改（完全沿用纯追踪的输出）
+}
   
 
     ros::NodeHandle nh_;
@@ -295,9 +284,9 @@ private:
     bool has_odom_ = false, has_path_ = false;
 
     double lookahead_distance_, max_linear_vel_, min_linear_vel_, max_angular_vel_;
-    double safety_distance_, emergency_distance_, turn_force_;
+    double safety_distance_, emergency_distance_, turn_force_; 
     double max_curvature_;  // 新增
-    int turn_direction_ = 1;  // 1左转，-1右转，0未确定
+    int turn_direction_ = 0;  // 1左转，-1右转，0未确定
     double last_angular_z_ = 0.0;   
     bool obstacle_detected_ = false;
     double front_clearance_, left_clearance_, right_clearance_;

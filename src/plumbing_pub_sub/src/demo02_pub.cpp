@@ -6,7 +6,7 @@ void doMsg(const std_msgs::String::ConstPtr &msg){
 int main(int argc ,char *argv[]){
     ros::init(argc,argv,"cuiHua");
     ros::NodeHandle nh;
-    ros::Subscriber sub=nh.subscribe<>("fang",10,doMsg);
+    ros::Subscriber sub=nh.subscribe<>("/chatter",10,doMsg);
     ros::spin();
     return 0;
  }
