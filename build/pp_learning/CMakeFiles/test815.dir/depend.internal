@@ -17,8 +17,6 @@ pp_learning/CMakeFiles/test815.dir/src/test815.cpp.o
  /opt/ros/noetic/include/geometry_msgs/TwistWithCovariance.h
  /opt/ros/noetic/include/geometry_msgs/Vector3.h
  /opt/ros/noetic/include/geometry_msgs/Vector3Stamped.h
- /opt/ros/noetic/include/nav_msgs/MapMetaData.h
- /opt/ros/noetic/include/nav_msgs/OccupancyGrid.h
  /opt/ros/noetic/include/nav_msgs/Odometry.h
  /opt/ros/noetic/include/nav_msgs/Path.h
  /opt/ros/noetic/include/ros/advertise_options.h
