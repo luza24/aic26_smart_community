@@ -1,0 +1,35 @@
+# ===== Catkin 构建产物 =====
+build/
+devel/
+install/
+logs/
+
+# Catkin 工作空间标记文件
+.catkin_workspace
+
+# ===== CMake =====
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+catkin_generated/
+CATKIN_IGNORE
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# ===== 编辑器 / IDE =====
+.vscode/
+.idea/
+*.swp
+*~
+
+# ===== 操作系统 =====
+.DS_Store
+Thumbs.db
+
+# ===== ROS 运行时数据 =====
+*.bag
+*.active
