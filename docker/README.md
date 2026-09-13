@@ -93,14 +93,14 @@ bash /root/display.sh stop     # 停止显示栈
 
 ## 已有容器里不想重建?
 
-`display.sh` 可以直接拷到任何容器里用,它自带依赖检查:
+不用重建,一条命令搞定 —— `setup.sh` 会装依赖、装 `display.sh`、配好 `.bashrc`、
+拉起显示栈,并且是**幂等**的(重复跑不会破坏已配好的东西):
 
 ```bash
-# 装依赖
-apt-get update && apt-get install -y xvfb x11vnc novnc websockify fluxbox xauth x11-apps x11-utils
-# 启用
-cp display.sh /root/display.sh && source /root/display.sh
+bash docker/setup.sh
 ```
+
+拿到一个干净的 `osrf/ros` 容器要快速配好图形环境,也是跑这条。
 
 ---
 
