@@ -1,10 +1,15 @@
 <launch>
 
+    <!-- gui:=false 时只启动 gzserver，不启动 Gazebo 图形界面 -->
+    <arg name="gui" default="true"/>
+
     <!-- 将 Urdf 文件的内容加载到参数服务器 -->
     <param name="robot_description" textfile="$(find urfd02_gazebo)/urdf/demo01_helloworld.urdf" />
 
     <!-- 启动 gazebo -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="$(arg gui)" />
+    </include>
 
     <!-- 在 gazebo 中显示机器人模型 -->
     <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model mycar -param robot_description"  />
