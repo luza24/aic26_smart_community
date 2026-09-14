@@ -17,16 +17,17 @@ TARGET=/root/display.sh
 
 echo "==> 1/4 检查并安装图形依赖"
 
-# xvfb       虚拟显示本体
+# xvfb       虚拟显示本体 (local 后端)
 # x11vnc     虚拟显示导出为 VNC
 # novnc      把 VNC 转成浏览器可访问的网页
 # websockify novnc 的 websocket 代理
 # fluxbox    轻量窗口管理器 (没有它 Gazebo 仍能渲染, 但窗口没有标题栏、不能拖动)
+# socat      windows 后端: 把容器内的 :0 套接字转发到 Windows 侧 X server
 # xauth      配合 Windows 侧 VcXsrv 时需要
 # x11-apps   xeyes 等验证用小程序
 # x11-utils  xdpyinfo / xwininfo 等诊断工具
 # imagemagick 截图 (xwd -> png)
-NEEDED=(xvfb x11vnc novnc websockify fluxbox xauth x11-apps x11-utils imagemagick)
+NEEDED=(xvfb x11vnc novnc websockify fluxbox socat xauth x11-apps x11-utils imagemagick)
 
 MISSING=()
 for p in "${NEEDED[@]}"; do

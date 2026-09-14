@@ -21,6 +21,8 @@ FROM osrf/ros:noetic-desktop-full
 # novnc     把 VNC 转成浏览器可访问的网页
 # websockify novnc 的 websocket 代理
 # fluxbox   轻量窗口管理器, 让 Gazebo/RViz 窗口有标题栏且可层叠
+# socat     windows 后端: 把容器内的 :0 套接字转发到 Windows 侧 X server,
+#           这样 DISPLAY=:0 不用改, 画面却出现在 Windows 桌面上
 # xauth     X 认证 (配合 Windows 侧 VcXsrv 时需要)
 # x11-apps  xeyes 等验证用小程序
 # x11-utils xdpyinfo / xwininfo 等诊断工具
@@ -31,6 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         novnc \
         websockify \
         fluxbox \
+        socat \
         xauth \
         x11-apps \
         x11-utils \
@@ -42,8 +45,10 @@ COPY display.sh /root/display.sh
 RUN chmod +x /root/display.sh
 
 # ---- 3. 容器一起动就拉起虚拟显示 -------------------------------------------
-# 用 source 而非 start: source 会先探测 Windows 侧的 X server(host.docker.internal:6000),
-# 连得上就复用它, 连不上才回退到容器内 Xvfb —— 这样两种用法都不用改配置。
+# 首次启动时探测 Windows 侧的 X server(host.docker.internal:6000): 连得上就用
+# socat 转发过去(原生窗口), 连不上就起容器内 Xvfb(浏览器查看) —— 两种用法都不用
+# 改配置。之后想换后端要显式敲 display.sh windows / local: 切换会停掉另一套,
+# 已经跑着的 Gazebo 会跟着挂, 所以不能让它自动发生。
 COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod +x /root/entrypoint.sh
 

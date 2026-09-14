@@ -51,6 +51,9 @@ PID 1 = bash                   ← 不是 init 系统
 WSLg 的 X socket 只活在用户那个 Ubuntu 发行版里,而容器跑在 Docker Desktop 的
 `docker-desktop` 发行版中,`/mnt/wslg/` 根本不存在 —— 挂 `/tmp/.X11-unix` 挂到的是空气。
 
+要在 Windows 桌面上看窗口,只能走**网络**这条路:Windows 侧自己起一个 X server
+(VcXsrv),容器经 `host.docker.internal` 连过去。这就是 5.2 的 windows 后端。
+
 ## 4. 走过的弯路(重要,避免重复踩)
 
 ### 4.1 误判一:`LIBGL_ALWAYS_SOFTWARE=1` 是必需的
@@ -130,16 +133,52 @@ nohup: missing operand
 
 **修法**:仅当 `"${BASH_SOURCE[0]}" == "${0}"`(直接执行)时才设置。
 
+### 4.9 假阳性检查的根治:把模式锚定在行首
+
+同一个"进程存活"假阳性在整轮排查里出现了三次,每次换一层皮:
+
+1. `pgrep -f '[g]zclient'` —— 匹配到自己 shell 的命令行(里面有 `echo "gzclient 存活"`)。
+2. `pgrep -x Xvfb` —— 冒充 VcXsrv 的假 Xvfb 进程名也叫 `Xvfb`,被数了进去。
+3. `pgrep -af Xvfb | grep -q 'Xvfb :0 '` —— **改完还是错**:调用方自己的命令行里
+   含有 `Xvfb :0 ` 这个字面量,`grep` 把这个 shell 自己也匹配上了。
+
+**根因是同一件事**:`-f` 匹配整条命令行,而"检测命令"本身也是一条命令行。
+
+**修法**:不用 `pgrep -f`,改为扫 `/proc/*/cmdline` 并把模式**锚定在行首**:
+
+```bash
+xvfb0_alive() { proc_cmdline_matches '^Xvfb :0( |$)'; }
+socat_alive() { proc_cmdline_matches '^socat '; }
+```
+
+任何 shell 的命令行都以 `/bin/bash` 之类的路径开头,永远不可能匹配 `^Xvfb`,
+这一类误判从根上消失。
+
+> 教训:`pkill -f` / `pgrep -f` 配上一个自己命令行里含有该模式字面量的上下文,
+> 是个反复出现的坑。检测脚本独立成文件、模式锚定行首,两条一起用才干净。
+
+### 4.10 `start_local` 漏停 socat
+
+模式切换的真实 bug,由测试套件第 6 项抓出来:windows → local 时,`start_local`
+起了 Xvfb,但**没停 socat**,残留的转发还占着 `X0` socket,两边打架。
+
+**修法**:`start_local()` 开头先 `stop_windows`。对称的 `start_windows()` 因为
+本来就会 `stop_local`,反而没这个问题 —— 单向的疏漏。
+
 ## 5. 最终方案
 
-### 5.1 核心思路:Xvfb 占用 `:0`
+### 5.1 核心思路:让某个 X server 顶替 `:0`
 
 **容器 PID 1 的环境里 `DISPLAY` 就是 `:0`,所有进程都继承它。**
-让虚拟显示直接顶替这个号,环境变量天然正确 —— **不依赖任何 shell 配置**。
+让显示后端直接顶替这个号,环境变量天然正确 —— **不依赖任何 shell 配置**。
 
 这是整个方案的关键。跑在 `:1` 上就需要每个 shell 都正确 source,永远治不干净。
 
+至于**谁来**顶替 `:0`,就是两个后端的区别 —— 两者互斥,同一时刻只有一个在跑。
+
 ### 5.2 显示栈
+
+**local 后端(浏览器看)**
 
 | 组件 | 作用 | 监听 |
 |---|---|---|
@@ -150,24 +189,52 @@ nohup: missing operand
 
 浏览器访问 **http://localhost:6080/vnc.html**。
 
+**windows 后端(Windows 桌面原生窗口)**
+
+| 组件 | 作用 | 监听 |
+|---|---|---|
+| `socat` | 把 `:0` 的 socket 转发到 Windows 侧 VcXsrv | `UNIX-LISTEN:/tmp/.X11-unix/X0` → `TCP4:192.168.65.254:6000` |
+
+```bash
+bash /root/display.sh windows   # 切到 Windows 原生窗口
+bash /root/display.sh local     # 切回浏览器
+```
+
+**为什么不是直接改 `DISPLAY=host.docker.internal:0`**:那样每一处用到图形的地方
+(交互 shell、VS Code 任务、`docker exec`、launch 里起的节点)都得跟着改,
+漏一个就是又一次 `exit code 134` —— 跟 4.7 的 `.bashrc` 缺陷是同一类病。
+socat 转发保持了"`DISPLAY=:0` 永远正确"这个不变量。
+
+两个实现细节:
+
+- **必须强制 IPv4**。`host.docker.internal` 同时解析出 IPv6
+  (`fdc4:f303:9324::254`)和 IPv4(`192.168.65.254`),socat 优先用 IPv6,
+  而 VcXsrv 只监听 IPv4 —— 不强制就永远连不上。用 `getent ahostsv4` 取地址。
+- **两个后端抢同一个 socket 路径**。所以切换 = 先停另一个再起。为了不让"开个
+  新终端"这种无害操作把正在跑的 Gazebo 弄挂,自动模式下**已有后端在跑就不切换**,
+  想换必须显式敲 `windows` / `local`。
+
 ### 5.3 用法
 
 ```bash
 roslaunch urdf02_gazebo demo03_laser.launch     # 直接跑, 无需 source 任何东西
 
-bash /root/display.sh status   # 查看各组件状态
-bash /root/display.sh check    # 检查 DISPLAY / X 连通性
-bash /root/display.sh start    # 只启动显示栈
-bash /root/display.sh stop     # 停止显示栈
+bash /root/display.sh status    # 各组件状态 / 当前后端 / Windows X 是否可达
+bash /root/display.sh check     # 检查 DISPLAY / X 连通性
+bash /root/display.sh start     # 只启动显示栈 (已有后端在跑则不切换)
+bash /root/display.sh windows   # 切到 Windows 侧 X server (VcXsrv)
+bash /root/display.sh local     # 切回容器内虚拟显示 (Xvfb)
+bash /root/display.sh stop      # 停止显示栈
 ```
 
-脚本会自动探测 Windows 侧的 X server(`host.docker.internal:6000`):
-连得上就复用它(原生窗口),连不上才回退到容器内 Xvfb(浏览器查看)。两种用法都不用改配置。
+Windows 侧的 VcXsrv 安装配置步骤见 `README.md` 的"路线 B"。
 
 ## 6. 验证结果
 
+**local 后端**(继承环境,完全不 source `display.sh`):
+
 ```
-继承来的 DISPLAY      = :0        ← 完全不 source display.sh, 只用继承环境
+继承来的 DISPLAY      = :0
 LIBGL_ALWAYS_SOFTWARE = <未设>
 
 gzclient : 存活
@@ -184,10 +251,25 @@ gzserver : 存活
 截图确认渲染正常:世界、障碍物圆柱、激光雷达蓝色扇形扫描全部呈现,
 标题栏由 fluxbox 提供,**Real Time Factor 1.00 / FPS 42~44**。
 
+**windows 后端**:容器内没有真实 VcXsrv 可连,用一个监听 TCP 的 `Xvfb :9`
+(端口 6009)冒充,经 `EXT_HOST=127.0.0.1 EXT_PORT=6009` 走 socat 转发验证:
+
+```
+DISPLAY=:0 xdpyinfo              → 经转发连通
+Gazebo 窗口出现在远端 :9 上        → 1066x516
+gzclient 存活 / 日志 0 次 abort
+```
+
+**模式切换测试套件**(`/tmp/test_modes.sh`,含进程/后端/socket 各类断言):
+**27 项全部通过**。上面 4.9 和 4.10 两个坑都是它抓出来的。
+
 ## 7. 固化
 
-见 `docker/Dockerfile` + `entrypoint.sh` + `display.sh`。
+见 `docker/Dockerfile` + `entrypoint.sh` + `display.sh` + `setup.sh`。
 基础镜像 `osrf/ros:noetic-desktop-full`(靠 `/ros_entrypoint.sh` 标志文件判定)。
+apt 依赖里含 `socat`(windows 后端必需)。
+
+已有容器不想重建就跑 `bash docker/setup.sh` —— 幂等,重复执行安全。
 
 ### 7.1 覆盖基础镜像 ENTRYPOINT 的陷阱
 
@@ -203,26 +285,40 @@ gzserver : 存活
   **必须**先 `docker cp` 出来或推送到 GitHub,并在新容器上挂 `-v`。这是比 Dockerfile
   更要紧的事。
 - 容器内无 docker CLI,**镜像构建无法在容器内验证**,需在 Windows 侧执行。
+  windows 后端同理:没有真实 VcXsrv,只能用假 X server 验证转发链路。
 - 虚拟显示栈是常驻进程,容器重启后靠 `entrypoint.sh` / `.bashrc` 拉起。
+- Docker Desktop on WSL2 的 `host.docker.internal` 地址(`192.168.65.254`)由
+  Docker 分配,理论上重启后可能变。脚本每次现取,不写死。
 
 ## 9. 快速诊断清单
 
 遇到 Gazebo GUI 起不来,按顺序查:
 
 ```bash
-# 1. 有没有 X server 在监听 DISPLAY 指向的地方
+# 1. 有没有 X server 在监听 DISPLAY 指向的地方 —— 这一条不过, gzclient 必崩
 echo "DISPLAY=$DISPLAY"
 xdpyinfo -display "$DISPLAY" | head -3
 
 # 2. X socket 存不存在
 ls -la /tmp/.X11-unix/
 
-# 3. 显示栈是否在跑 (必须用 -x, 不能用 -f)
-for p in Xvfb fluxbox x11vnc; do printf "%-10s " $p; pgrep -x $p >/dev/null && echo 在跑 || echo 没跑; done
+# 3. 当前哪个后端 / 各组件状态 / Windows X 可不可达
+bash /root/display.sh status
 
 # 4. 包路径对不对
 rospack find urdf02_gazebo
 
-# 5. 直接看浏览器入口通不通
+# 5. 走浏览器的话, 看入口通不通
 curl -s -o /dev/null -w "%{http_code}\n" http://localhost:6080/vnc.html
+```
+
+第 3 步要用的进程判断,**不要写成 `pgrep -f`**(见 4.9,会匹配到调用方自己):
+
+```bash
+# 组件用 pidfile 判断 (display.sh 自己管理的)
+for n in xvfb fluxbox x11vnc noVNC socat; do
+    f=/tmp/display-stack/$n.pid
+    printf "%-9s " "$n"
+    [ -f "$f" ] && kill -0 "$(cat "$f")" 2>/dev/null && echo 在跑 || echo 没跑
+done
 ```
