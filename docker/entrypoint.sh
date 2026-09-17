@@ -12,8 +12,9 @@ if [ -f "/opt/ros/${ROS_DISTRO:-noetic}/setup.bash" ]; then
 fi
 
 # 2. 图形显示栈
-# 用 source 而非 `display.sh start`: source 会先探测 Windows 侧的 X server
-# (host.docker.internal:6000), 连得上就复用它, 连不上才回退到容器内 Xvfb。
+# 用 source 而非 `display.sh start`: source 会按 external > windows > local 的顺序
+# 探测 —— 平台已经挂了可用的 :0 就什么都不启动(实测 Docker Desktop 会把 VM 的
+# /.X11-unix 只读挂进来), 否则复用 Windows 侧的 X server, 再否则回退容器内 Xvfb。
 # 探测/启动失败不能阻断容器启动, 所以兜了 || true。
 source /root/display.sh >/dev/null 2>&1 || true
 

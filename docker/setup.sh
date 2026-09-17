@@ -84,6 +84,7 @@ echo " 完成。直接运行, 不需要 source 任何东西:"
 echo
 echo "     roslaunch urdf02_gazebo demo03_laser.launch"
 echo
-echo " 浏览器查看: http://localhost:6080/vnc.html"
+# 画面看哪里由上面 source 时探测出的后端决定, 它自己已经打印了对应提示 ——
+# 这里不再写死"浏览器打开 xxx", 否则平台自带 :0 时这句是错的。
 echo " 状态 / 诊断: bash /root/display.sh status | check"
 echo "=============================================="

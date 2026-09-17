@@ -5,7 +5,8 @@
 #  (Ubuntu 20.04 focal / ROS noetic desktop-full / Gazebo 11.15.1)
 #
 #  这个镜像解决两件事:
-#    1. 容器内没有 X server 导致 gzclient 报 "exit code 134" 的问题
+#    1. 容器内没有可用的 X server 时 gzclient 报 "exit code 134" 的问题
+#       (平台自己给 :0 的话用不上, 见 docker/README.md 的 external 后端)
 #    2. 让重建容器后不必再手工敲一堆 apt install
 #
 #  构建:
@@ -44,11 +45,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY display.sh /root/display.sh
 RUN chmod +x /root/display.sh
 
-# ---- 3. 容器一起动就拉起虚拟显示 -------------------------------------------
-# 首次启动时探测 Windows 侧的 X server(host.docker.internal:6000): 连得上就用
-# socat 转发过去(原生窗口), 连不上就起容器内 Xvfb(浏览器查看) —— 两种用法都不用
-# 改配置。之后想换后端要显式敲 display.sh windows / local: 切换会停掉另一套,
-# 已经跑着的 Gazebo 会跟着挂, 所以不能让它自动发生。
+# ---- 3. 容器一起动就准备好 DISPLAY ------------------------------------------
+# 按 external > windows > local 的顺序探测: 平台已经挂了可用的 :0 就什么都不启动,
+# 否则用 socat 转发到 Windows 侧 X server(原生窗口), 再否则起容器内 Xvfb(浏览器
+# 查看) —— 三种用法都不用改配置。之后想强制换后端要显式敲 display.sh windows /
+# local: 切换会停掉另一套, 已经跑着的 Gazebo 会跟着挂, 所以不能让它自动发生。
 COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod +x /root/entrypoint.sh
 

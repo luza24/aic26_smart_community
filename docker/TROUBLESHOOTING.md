@@ -23,7 +23,7 @@ log file: /root/.ros/log/<run_id>/gazebo_gui-3*.log
 也就是说:**仿真本身是好的,坏的只有图形界面。**
 
 ## 2. 根因
-
+   
 **容器里没有任何 X server。** 环境变量 `DISPLAY=:0` 是个悬空值 —— 变量被设上了,
 背后没有服务在监听。`gzclient` 创建 OpenGL context 时拿不到 display,OGRE 抛异常,
 `abort()`。
