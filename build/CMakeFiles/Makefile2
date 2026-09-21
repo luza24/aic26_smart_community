@@ -78,6 +78,7 @@ all: servicelea/all
 all: tf02_dynic/all
 all: tf04_test/all
 all: diffbot/diffbot_description/all
+all: visual_plug/all
 all: diffbot/diffbot_navigation/all
 all: nav_demo/all
 all: diffbot/diffbot_base/all
@@ -113,6 +114,7 @@ preinstall: servicelea/preinstall
 preinstall: tf02_dynic/preinstall
 preinstall: tf04_test/preinstall
 preinstall: diffbot/diffbot_description/preinstall
+preinstall: visual_plug/preinstall
 preinstall: diffbot/diffbot_navigation/preinstall
 preinstall: nav_demo/preinstall
 preinstall: diffbot/diffbot_base/preinstall
@@ -153,6 +155,7 @@ clean: servicelea/clean
 clean: tf02_dynic/clean
 clean: tf04_test/clean
 clean: diffbot/diffbot_description/clean
+clean: visual_plug/clean
 clean: diffbot/diffbot_navigation/clean
 clean: nav_demo/clean
 clean: diffbot/diffbot_base/clean
@@ -1006,6 +1009,24 @@ urdf02_gazebo/clean: urdf02_gazebo/CMakeFiles/bond_generate_messages_cpp.dir/cle
 .PHONY : urdf02_gazebo/clean
 
 #=============================================================================
+# Directory level rules for directory visual_plug
+
+# Recursive "all" directory target.
+visual_plug/all: visual_plug/CMakeFiles/traffic_light_plugin.dir/all
+
+.PHONY : visual_plug/all
+
+# Recursive "preinstall" directory target.
+visual_plug/preinstall:
+
+.PHONY : visual_plug/preinstall
+
+# Recursive "clean" directory target.
+visual_plug/clean: visual_plug/CMakeFiles/traffic_light_plugin.dir/clean
+
+.PHONY : visual_plug/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/doxygen.dir
 
 # All Build rule for target.
@@ -1148,12 +1169,12 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmoc
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=60 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=59,60 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
 gtest/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/googlemock/CMakeFiles/gmock_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/rule
@@ -1175,7 +1196,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/clean:
 gtest/googlemock/CMakeFiles/gmock.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=59 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=58 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1342,7 +1363,7 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gencpp.dir/all: diffbot/diffbot_msg
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gencpp.dir/rule
@@ -1453,12 +1474,12 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/all: d
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/all: diffbot/diffbot_msgs/CMakeFiles/_diffbot_msgs_generate_messages_check_deps_WheelsCmdStamped.dir/all
 	$(MAKE) -f diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/build.make diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/depend
 	$(MAKE) -f diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/build.make diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=49,50,51,52 "Built target diffbot_msgs_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=48,49,50,51,52 "Built target diffbot_msgs_generate_messages_nodejs"
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_nodejs.dir/rule
@@ -1628,7 +1649,7 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gennodejs.dir/all: diffbot/diffbot_
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_gennodejs.dir/rule
@@ -1686,7 +1707,7 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages.dir/all: diffbot/
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 24
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages.dir/rule
@@ -1805,12 +1826,12 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/all: diff
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/all: diffbot/diffbot_msgs/CMakeFiles/_diffbot_msgs_generate_messages_check_deps_WheelsCmdStamped.dir/all
 	$(MAKE) -f diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/build.make diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/build.make diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=35,36,37,38 "Built target diffbot_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=34,35,36,37,38 "Built target diffbot_msgs_generate_messages_cpp"
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_cpp.dir/rule
@@ -1867,12 +1888,12 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/all: dif
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/all: diffbot/diffbot_msgs/CMakeFiles/_diffbot_msgs_generate_messages_check_deps_WheelsCmdStamped.dir/all
 	$(MAKE) -f diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/build.make diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/build.make diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=44,45,46,47,48 "Built target diffbot_msgs_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=44,45,46,47 "Built target diffbot_msgs_generate_messages_lisp"
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_generate_messages_lisp.dir/rule
@@ -1899,7 +1920,7 @@ diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_genlisp.dir/all: diffbot/diffbot_ms
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_msgs/CMakeFiles/diffbot_msgs_genlisp.dir/rule
@@ -2245,12 +2266,12 @@ demo_plugin/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
 hello_vscode/CMakeFiles/hello_vscode_node.dir/all:
 	$(MAKE) -f hello_vscode/CMakeFiles/hello_vscode_node.dir/build.make hello_vscode/CMakeFiles/hello_vscode_node.dir/depend
 	$(MAKE) -f hello_vscode/CMakeFiles/hello_vscode_node.dir/build.make hello_vscode/CMakeFiles/hello_vscode_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=63,64 "Built target hello_vscode_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=63 "Built target hello_vscode_node"
 .PHONY : hello_vscode/CMakeFiles/hello_vscode_node.dir/all
 
 # Build rule for subdir invocation for target.
 hello_vscode/CMakeFiles/hello_vscode_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 hello_vscode/CMakeFiles/hello_vscode_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : hello_vscode/CMakeFiles/hello_vscode_node.dir/rule
@@ -2272,7 +2293,7 @@ hello_vscode/CMakeFiles/hello_vscode_node.dir/clean:
 helloworld/CMakeFiles/helloworld_node.dir/all:
 	$(MAKE) -f helloworld/CMakeFiles/helloworld_node.dir/build.make helloworld/CMakeFiles/helloworld_node.dir/depend
 	$(MAKE) -f helloworld/CMakeFiles/helloworld_node.dir/build.make helloworld/CMakeFiles/helloworld_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=65 "Built target helloworld_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=64 "Built target helloworld_node"
 .PHONY : helloworld/CMakeFiles/helloworld_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2434,12 +2455,12 @@ learn_para/CMakeFiles/std_srvs_generate_messages_cpp.dir/clean:
 learning_topic/CMakeFiles/subcriber_person.dir/all: learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/all
 	$(MAKE) -f learning_topic/CMakeFiles/subcriber_person.dir/build.make learning_topic/CMakeFiles/subcriber_person.dir/depend
 	$(MAKE) -f learning_topic/CMakeFiles/subcriber_person.dir/build.make learning_topic/CMakeFiles/subcriber_person.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=94 "Built target subcriber_person"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=93 "Built target subcriber_person"
 .PHONY : learning_topic/CMakeFiles/subcriber_person.dir/all
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/subcriber_person.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/subcriber_person.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/subcriber_person.dir/rule
@@ -2520,12 +2541,12 @@ learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/all: diffbot/d
 learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/all: learning_topic/CMakeFiles/_learning_topic_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/depend
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=68,69 "Built target learning_topic_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=68 "Built target learning_topic_generate_messages_py"
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_py.dir/rule
@@ -2548,12 +2569,12 @@ learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/all: diffbot/
 learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/all: learning_topic/CMakeFiles/_learning_topic_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/depend
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target learning_topic_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=65 "Built target learning_topic_generate_messages_cpp"
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/rule
@@ -2608,7 +2629,7 @@ learning_topic/CMakeFiles/learning_topic_gencpp.dir/all: learning_topic/CMakeFil
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_gencpp.dir/rule
@@ -2635,7 +2656,7 @@ learning_topic/CMakeFiles/learning_topic_genlisp.dir/all: learning_topic/CMakeFi
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_genlisp.dir/rule
@@ -2684,12 +2705,12 @@ learning_topic/CMakeFiles/learning_topic_geneus.dir/clean:
 learning_topic/CMakeFiles/publisher_person.dir/all: learning_topic/CMakeFiles/learning_topic_generate_messages_cpp.dir/all
 	$(MAKE) -f learning_topic/CMakeFiles/publisher_person.dir/build.make learning_topic/CMakeFiles/publisher_person.dir/depend
 	$(MAKE) -f learning_topic/CMakeFiles/publisher_person.dir/build.make learning_topic/CMakeFiles/publisher_person.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=74 "Built target publisher_person"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=73 "Built target publisher_person"
 .PHONY : learning_topic/CMakeFiles/publisher_person.dir/all
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/publisher_person.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/publisher_person.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/publisher_person.dir/rule
@@ -2712,12 +2733,12 @@ learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/all: diffbot
 learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/all: learning_topic/CMakeFiles/_learning_topic_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/depend
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=67 "Built target learning_topic_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target learning_topic_generate_messages_lisp"
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_lisp.dir/rule
@@ -2740,12 +2761,12 @@ learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/all: diffb
 learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/all: learning_topic/CMakeFiles/_learning_topic_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/depend
 	$(MAKE) -f learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/build.make learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target learning_topic_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=67 "Built target learning_topic_generate_messages_nodejs"
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_generate_messages_nodejs.dir/rule
@@ -2772,7 +2793,7 @@ learning_topic/CMakeFiles/learning_topic_gennodejs.dir/all: learning_topic/CMake
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_gennodejs.dir/rule
@@ -2799,7 +2820,7 @@ learning_topic/CMakeFiles/learning_topic_genpy.dir/all: learning_topic/CMakeFile
 
 # Build rule for subdir invocation for target.
 learning_topic/CMakeFiles/learning_topic_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/learning_topic_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : learning_topic/CMakeFiles/learning_topic_genpy.dir/rule
@@ -2848,12 +2869,12 @@ plumbing_pub_sub/CMakeFiles/demo02_pub_node.dir/clean:
 plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/all:
 	$(MAKE) -f plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/build.make plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/depend
 	$(MAKE) -f plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/build.make plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=25 "Built target demo01_pub_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=24,25 "Built target demo01_pub_node"
 .PHONY : plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/all
 
 # Build rule for subdir invocation for target.
 plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : plumbing_pub_sub/CMakeFiles/demo01_pub_node.dir/rule
@@ -3010,12 +3031,12 @@ rosparam_shortcuts/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
 rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/all: rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/all
 	$(MAKE) -f rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/build.make rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/depend
 	$(MAKE) -f rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/build.make rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=83 "Built target rosparam_shortcuts_example"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=82 "Built target rosparam_shortcuts_example"
 .PHONY : rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/all
 
 # Build rule for subdir invocation for target.
 rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/rule
@@ -3037,12 +3058,12 @@ rosparam_shortcuts/CMakeFiles/rosparam_shortcuts_example.dir/clean:
 rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/all:
 	$(MAKE) -f rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/build.make rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/depend
 	$(MAKE) -f rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/build.make rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=81,82 "Built target rosparam_shortcuts"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=81 "Built target rosparam_shortcuts"
 .PHONY : rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/all
 
 # Build rule for subdir invocation for target.
 rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/rule
@@ -3153,7 +3174,7 @@ action_demo/CMakeFiles/action_client.dir/all: action_demo/CMakeFiles/action_demo
 
 # Build rule for subdir invocation for target.
 action_demo/CMakeFiles/action_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 action_demo/CMakeFiles/action_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : action_demo/CMakeFiles/action_client.dir/rule
@@ -3389,7 +3410,7 @@ action_demo/CMakeFiles/action_demo_generate_messages.dir/all: action_demo/CMakeF
 
 # Build rule for subdir invocation for target.
 action_demo/CMakeFiles/action_demo_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 action_demo/CMakeFiles/action_demo_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : action_demo/CMakeFiles/action_demo_generate_messages.dir/rule
@@ -3921,12 +3942,12 @@ action_demo/CMakeFiles/action_demo_generate_messages_py.dir/all: action_demo/CMa
 action_demo/CMakeFiles/action_demo_generate_messages_py.dir/all: action_demo/CMakeFiles/_action_demo_generate_messages_check_deps_AddintsActionResult.dir/all
 	$(MAKE) -f action_demo/CMakeFiles/action_demo_generate_messages_py.dir/build.make action_demo/CMakeFiles/action_demo_generate_messages_py.dir/depend
 	$(MAKE) -f action_demo/CMakeFiles/action_demo_generate_messages_py.dir/build.make action_demo/CMakeFiles/action_demo_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=19,20,21,22,23 "Built target action_demo_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=19,20,21,22 "Built target action_demo_generate_messages_py"
 .PHONY : action_demo/CMakeFiles/action_demo_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 action_demo/CMakeFiles/action_demo_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 action_demo/CMakeFiles/action_demo_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : action_demo/CMakeFiles/action_demo_generate_messages_py.dir/rule
@@ -3953,7 +3974,7 @@ action_demo/CMakeFiles/action_demo_genpy.dir/all: action_demo/CMakeFiles/action_
 
 # Build rule for subdir invocation for target.
 action_demo/CMakeFiles/action_demo_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 action_demo/CMakeFiles/action_demo_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : action_demo/CMakeFiles/action_demo_genpy.dir/rule
@@ -4010,7 +4031,7 @@ action_demo/CMakeFiles/action01_server.dir/all: action_demo/CMakeFiles/action_de
 
 # Build rule for subdir invocation for target.
 action_demo/CMakeFiles/action01_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 action_demo/CMakeFiles/action01_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : action_demo/CMakeFiles/action01_server.dir/rule
@@ -4167,12 +4188,12 @@ dy_reconfigure/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
 dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/all:
 	$(MAKE) -f dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/build.make dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/depend
 	$(MAKE) -f dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/build.make dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=58 "Built target dy_reconfigure_gencfg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target dy_reconfigure_gencfg"
 .PHONY : dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/all
 
 # Build rule for subdir invocation for target.
 dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : dy_reconfigure/CMakeFiles/dy_reconfigure_gencfg.dir/rule
@@ -4383,12 +4404,12 @@ raspicam_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
 raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/all:
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/build.make raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/depend
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/build.make raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target raspicam_node_gencfg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=76 "Built target raspicam_node_gencfg"
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/all
 
 # Build rule for subdir invocation for target.
 raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_gencfg.dir/rule
@@ -4497,7 +4518,7 @@ raspicam_node/CMakeFiles/raspicam_node_gencpp.dir/all: raspicam_node/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 raspicam_node/CMakeFiles/raspicam_node_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 raspicam_node/CMakeFiles/raspicam_node_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_gencpp.dir/rule
@@ -4520,7 +4541,7 @@ raspicam_node/CMakeFiles/raspicam_node.dir/all: raspicam_node/CMakeFiles/raspica
 raspicam_node/CMakeFiles/raspicam_node.dir/all: raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/all
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node.dir/build.make raspicam_node/CMakeFiles/raspicam_node.dir/depend
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node.dir/build.make raspicam_node/CMakeFiles/raspicam_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=75,76 "Built target raspicam_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=74,75 "Built target raspicam_node"
 .PHONY : raspicam_node/CMakeFiles/raspicam_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4606,12 +4627,12 @@ raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/all: diffbot/dif
 raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/all: raspicam_node/CMakeFiles/_raspicam_node_generate_messages_check_deps_MotionVectors.dir/all
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/depend
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=80 "Built target raspicam_node_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=79,80 "Built target raspicam_node_generate_messages_py"
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_generate_messages_py.dir/rule
@@ -4742,12 +4763,12 @@ raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/all: diffbot/di
 raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/all: raspicam_node/CMakeFiles/_raspicam_node_generate_messages_check_deps_MotionVectors.dir/all
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/depend
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=77 "Built target raspicam_node_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target raspicam_node_generate_messages_cpp"
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_generate_messages_cpp.dir/rule
@@ -4770,7 +4791,7 @@ raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/all: diffbot/d
 raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/all: raspicam_node/CMakeFiles/_raspicam_node_generate_messages_check_deps_MotionVectors.dir/all
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/depend
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=79 "Built target raspicam_node_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=78 "Built target raspicam_node_generate_messages_lisp"
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4856,7 +4877,7 @@ raspicam_node/CMakeFiles/raspicam_node_genpy.dir/all: raspicam_node/CMakeFiles/r
 
 # Build rule for subdir invocation for target.
 raspicam_node/CMakeFiles/raspicam_node_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 raspicam_node/CMakeFiles/raspicam_node_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_genpy.dir/rule
@@ -4879,7 +4900,7 @@ raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/all: diffbot/di
 raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/all: raspicam_node/CMakeFiles/_raspicam_node_generate_messages_check_deps_MotionVectors.dir/all
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/depend
 	$(MAKE) -f raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/build.make raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=78 "Built target raspicam_node_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=77 "Built target raspicam_node_generate_messages_eus"
 .PHONY : raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4906,7 +4927,7 @@ raspicam_node/CMakeFiles/raspicam_node_generate_messages_eus.dir/clean:
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/all:
 	$(MAKE) -f rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build.make rplidar_ros/CMakeFiles/rplidarNodeClient.dir/depend
 	$(MAKE) -f rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build.make rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=88 "Built target rplidarNodeClient"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=87 "Built target rplidarNodeClient"
 .PHONY : rplidar_ros/CMakeFiles/rplidarNodeClient.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4933,7 +4954,7 @@ rplidar_ros/CMakeFiles/rplidarNodeClient.dir/clean:
 rplidar_ros/CMakeFiles/rplidarNode.dir/all:
 	$(MAKE) -f rplidar_ros/CMakeFiles/rplidarNode.dir/build.make rplidar_ros/CMakeFiles/rplidarNode.dir/depend
 	$(MAKE) -f rplidar_ros/CMakeFiles/rplidarNode.dir/build.make rplidar_ros/CMakeFiles/rplidarNode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=84,85,86,87 "Built target rplidarNode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=83,84,85,86 "Built target rplidarNode"
 .PHONY : rplidar_ros/CMakeFiles/rplidarNode.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4960,7 +4981,7 @@ rplidar_ros/CMakeFiles/rplidarNode.dir/clean:
 pp_learning/CMakeFiles/test815.dir/all:
 	$(MAKE) -f pp_learning/CMakeFiles/test815.dir/build.make pp_learning/CMakeFiles/test815.dir/depend
 	$(MAKE) -f pp_learning/CMakeFiles/test815.dir/build.make pp_learning/CMakeFiles/test815.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=95 "Built target test815"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=94 "Built target test815"
 .PHONY : pp_learning/CMakeFiles/test815.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5014,7 +5035,7 @@ pp_learning/CMakeFiles/tf2_msgs_generate_messages_py.dir/clean:
 pp_learning/CMakeFiles/simple_pure_pursuit.dir/all:
 	$(MAKE) -f pp_learning/CMakeFiles/simple_pure_pursuit.dir/build.make pp_learning/CMakeFiles/simple_pure_pursuit.dir/depend
 	$(MAKE) -f pp_learning/CMakeFiles/simple_pure_pursuit.dir/build.make pp_learning/CMakeFiles/simple_pure_pursuit.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=93 "Built target simple_pure_pursuit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=92 "Built target simple_pure_pursuit"
 .PHONY : pp_learning/CMakeFiles/simple_pure_pursuit.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5095,7 +5116,7 @@ pp_learning/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean:
 pp_learning/CMakeFiles/nav_pure_pursuit.dir/all:
 	$(MAKE) -f pp_learning/CMakeFiles/nav_pure_pursuit.dir/build.make pp_learning/CMakeFiles/nav_pure_pursuit.dir/depend
 	$(MAKE) -f pp_learning/CMakeFiles/nav_pure_pursuit.dir/build.make pp_learning/CMakeFiles/nav_pure_pursuit.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=70 "Built target nav_pure_pursuit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=69 "Built target nav_pure_pursuit"
 .PHONY : pp_learning/CMakeFiles/nav_pure_pursuit.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5629,7 +5650,7 @@ tf03_mul/CMakeFiles/demo01_tfs.dir/clean:
 servicelea/CMakeFiles/person_server.dir/all: servicelea/CMakeFiles/servicelea_gencpp.dir/all
 	$(MAKE) -f servicelea/CMakeFiles/person_server.dir/build.make servicelea/CMakeFiles/person_server.dir/depend
 	$(MAKE) -f servicelea/CMakeFiles/person_server.dir/build.make servicelea/CMakeFiles/person_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=73 "Built target person_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=72 "Built target person_server"
 .PHONY : servicelea/CMakeFiles/person_server.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5711,7 +5732,7 @@ servicelea/CMakeFiles/servicelea_generate_messages_py.dir/all: diffbot/diffbot_m
 servicelea/CMakeFiles/servicelea_generate_messages_py.dir/all: servicelea/CMakeFiles/_servicelea_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_py.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_py.dir/depend
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_py.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=92 "Built target servicelea_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=91 "Built target servicelea_generate_messages_py"
 .PHONY : servicelea/CMakeFiles/servicelea_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5739,7 +5760,7 @@ servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/all: diffbot/diffb
 servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/all: servicelea/CMakeFiles/_servicelea_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/depend
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=91 "Built target servicelea_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=90 "Built target servicelea_generate_messages_nodejs"
 .PHONY : servicelea/CMakeFiles/servicelea_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5794,7 +5815,7 @@ servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/all: diffbot/diffbot_
 servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/all: servicelea/CMakeFiles/_servicelea_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/depend
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=89 "Built target servicelea_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=88 "Built target servicelea_generate_messages_eus"
 .PHONY : servicelea/CMakeFiles/servicelea_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5903,7 +5924,7 @@ servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/all: diffbot/diffbot
 servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/all: servicelea/CMakeFiles/_servicelea_generate_messages_check_deps_person.dir/all
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/depend
 	$(MAKE) -f servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/build.make servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=90 "Built target servicelea_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=89 "Built target servicelea_generate_messages_lisp"
 .PHONY : servicelea/CMakeFiles/servicelea_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6069,7 +6090,7 @@ servicelea/CMakeFiles/_servicelea_generate_messages_check_deps_person.dir/clean:
 servicelea/CMakeFiles/person_client.dir/all: servicelea/CMakeFiles/servicelea_gencpp.dir/all
 	$(MAKE) -f servicelea/CMakeFiles/person_client.dir/build.make servicelea/CMakeFiles/person_client.dir/depend
 	$(MAKE) -f servicelea/CMakeFiles/person_client.dir/build.make servicelea/CMakeFiles/person_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=72 "Built target person_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=71 "Built target person_client"
 .PHONY : servicelea/CMakeFiles/person_client.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6320,7 +6341,7 @@ tf02_dynic/CMakeFiles/demo01_pub.dir/all: servicelea/CMakeFiles/turtlesim_genera
 tf02_dynic/CMakeFiles/demo01_pub.dir/all: servicelea/CMakeFiles/turtlesim_generate_messages_eus.dir/all
 	$(MAKE) -f tf02_dynic/CMakeFiles/demo01_pub.dir/build.make tf02_dynic/CMakeFiles/demo01_pub.dir/depend
 	$(MAKE) -f tf02_dynic/CMakeFiles/demo01_pub.dir/build.make tf02_dynic/CMakeFiles/demo01_pub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=24 "Built target demo01_pub"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=23 "Built target demo01_pub"
 .PHONY : tf02_dynic/CMakeFiles/demo01_pub.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6533,7 +6554,7 @@ tf04_test/CMakeFiles/new_turtle.dir/all: servicelea/CMakeFiles/turtlesim_generat
 tf04_test/CMakeFiles/new_turtle.dir/all: servicelea/CMakeFiles/turtlesim_generate_messages_eus.dir/all
 	$(MAKE) -f tf04_test/CMakeFiles/new_turtle.dir/build.make tf04_test/CMakeFiles/new_turtle.dir/depend
 	$(MAKE) -f tf04_test/CMakeFiles/new_turtle.dir/build.make tf04_test/CMakeFiles/new_turtle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=71 "Built target new_turtle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=70 "Built target new_turtle"
 .PHONY : tf04_test/CMakeFiles/new_turtle.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6959,6 +6980,33 @@ diffbot/diffbot_description/CMakeFiles/map_msgs_generate_messages_eus.dir/clean:
 .PHONY : diffbot/diffbot_description/CMakeFiles/map_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
+# Target rules for target visual_plug/CMakeFiles/traffic_light_plugin.dir
+
+# All Build rule for target.
+visual_plug/CMakeFiles/traffic_light_plugin.dir/all:
+	$(MAKE) -f visual_plug/CMakeFiles/traffic_light_plugin.dir/build.make visual_plug/CMakeFiles/traffic_light_plugin.dir/depend
+	$(MAKE) -f visual_plug/CMakeFiles/traffic_light_plugin.dir/build.make visual_plug/CMakeFiles/traffic_light_plugin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=95 "Built target traffic_light_plugin"
+.PHONY : visual_plug/CMakeFiles/traffic_light_plugin.dir/all
+
+# Build rule for subdir invocation for target.
+visual_plug/CMakeFiles/traffic_light_plugin.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 visual_plug/CMakeFiles/traffic_light_plugin.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+.PHONY : visual_plug/CMakeFiles/traffic_light_plugin.dir/rule
+
+# Convenience name for target.
+traffic_light_plugin: visual_plug/CMakeFiles/traffic_light_plugin.dir/rule
+
+.PHONY : traffic_light_plugin
+
+# clean rule for target.
+visual_plug/CMakeFiles/traffic_light_plugin.dir/clean:
+	$(MAKE) -f visual_plug/CMakeFiles/traffic_light_plugin.dir/build.make visual_plug/CMakeFiles/traffic_light_plugin.dir/clean
+.PHONY : visual_plug/CMakeFiles/traffic_light_plugin.dir/clean
+
+#=============================================================================
 # Target rules for target diffbot/diffbot_navigation/CMakeFiles/amcl_gencfg.dir
 
 # All Build rule for target.
@@ -7344,12 +7392,12 @@ diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/all: rosparam_shortcuts/CMakeFi
 diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/all: diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/all
 	$(MAKE) -f diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/build.make diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/depend
 	$(MAKE) -f diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/build.make diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=31,32 "Built target diffbot_base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=31 "Built target diffbot_base"
 .PHONY : diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/all
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_base/CMakeFiles/diffbot_base.dir/rule
@@ -7911,12 +7959,12 @@ diffbot/diffbot_base/CMakeFiles/control_toolbox_generate_messages_py.dir/clean:
 diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/all:
 	$(MAKE) -f diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/build.make diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/depend
 	$(MAKE) -f diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/build.make diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num= "Built target diffbot_base_gencfg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=32 "Built target diffbot_base_gencfg"
 .PHONY : diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/all
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_base/CMakeFiles/diffbot_base_gencfg.dir/rule
@@ -7939,12 +7987,12 @@ diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/all: diffbot/diffbot_ms
 diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/all: rosparam_shortcuts/CMakeFiles/rosparam_shortcuts.dir/all
 	$(MAKE) -f diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/build.make diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/depend
 	$(MAKE) -f diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/build.make diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=33,34 "Built target diffbot_hw_interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=33 "Built target diffbot_hw_interface"
 .PHONY : diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/all
 
 # Build rule for subdir invocation for target.
 diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/catkin_ws/build/CMakeFiles 0
 .PHONY : diffbot/diffbot_base/CMakeFiles/diffbot_hw_interface.dir/rule

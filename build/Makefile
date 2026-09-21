@@ -2794,6 +2794,19 @@ map_msgs_generate_messages_eus/fast:
 .PHONY : map_msgs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named traffic_light_plugin
+
+# Build rule for target.
+traffic_light_plugin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 traffic_light_plugin
+.PHONY : traffic_light_plugin
+
+# fast build rule for target.
+traffic_light_plugin/fast:
+	$(MAKE) -f visual_plug/CMakeFiles/traffic_light_plugin.dir/build.make visual_plug/CMakeFiles/traffic_light_plugin.dir/build
+.PHONY : traffic_light_plugin/fast
+
+#=============================================================================
 # Target rules for targets named amcl_gencfg
 
 # Build rule for target.
@@ -3736,6 +3749,7 @@ help:
 	@echo "... rviz_generate_messages_lisp"
 	@echo "... map_msgs_generate_messages_lisp"
 	@echo "... map_msgs_generate_messages_eus"
+	@echo "... traffic_light_plugin"
 	@echo "... amcl_gencfg"
 	@echo "... topic_tools_generate_messages_cpp"
 	@echo "... move_base_msgs_generate_messages_eus"

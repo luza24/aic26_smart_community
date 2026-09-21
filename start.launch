@@ -1,0 +1,5 @@
+
+<launch>
+    <include file="$(find urdf02_gazebo)/launch/demo03_laser.launch" />
+    <include file="$(find nav_demo)/launch/move_test_aic.launch" />
+</launch>

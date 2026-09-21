@@ -396,6 +396,14 @@
 /root/catkin_ws/build/diffbot/diffbot_description/CMakeFiles/rviz_generate_messages_lisp.dir
 /root/catkin_ws/build/diffbot/diffbot_description/CMakeFiles/map_msgs_generate_messages_lisp.dir
 /root/catkin_ws/build/diffbot/diffbot_description/CMakeFiles/map_msgs_generate_messages_eus.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/install/strip.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/install/local.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/install.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/list_install_components.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/rebuild_cache.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/edit_cache.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/test.dir
+/root/catkin_ws/build/visual_plug/CMakeFiles/traffic_light_plugin.dir
 /root/catkin_ws/build/diffbot/diffbot_navigation/CMakeFiles/install/strip.dir
 /root/catkin_ws/build/diffbot/diffbot_navigation/CMakeFiles/install/local.dir
 /root/catkin_ws/build/diffbot/diffbot_navigation/CMakeFiles/install.dir
