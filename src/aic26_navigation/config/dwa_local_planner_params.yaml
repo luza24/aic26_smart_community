@@ -1,0 +1,24 @@
+DWAPlannerROS:
+      max_vel_x: 0.2
+      min_vel_x: 0.0           # 别设负值,倒退容易造成来回抖
+      max_vel_trans: 0.2
+      max_vel_theta: 1.0
+      min_vel_theta: 0.3
+      min_in_place_vel_theta: 0.3
+
+      acc_lim_x: 0.4           # 关键:1.0 → 0.4,加减速都变平滑
+      acc_lim_theta: 1.0       # 关键:2.0 → 1.0
+
+      xy_goal_tolerance: 0.35  # 关键:0.2 → 0.35,提前切下一个点
+      yaw_goal_tolerance: 0.2  # 关键:0.1 → 0.2,别原地转半天
+
+      sim_time: 1.5            # 前瞻时间稍大,轨迹更连续
+      sim_granularity: 0.025
+      vx_samples: 20
+      vtheta_samples: 40
+
+      path_distance_bias: 32.0
+      goal_distance_bias: 20.0
+      occdist_scale: 0.02
+
+      latch_xy_goal_tolerance: true  # 到达 xy 容差后只转不重规划,减少反复调整

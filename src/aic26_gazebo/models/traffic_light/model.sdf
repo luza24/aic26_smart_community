@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="traffic_light">
+    <static>true</static>
+    <link name="gantry">
+      <collision name="left_post_collision">
+        <pose>-0.34 0 0.32 0 0 0</pose>
+        <geometry><cylinder><radius>0.022</radius><length>0.64</length></cylinder></geometry>
+      </collision>
+      <collision name="right_post_collision">
+        <pose>0.34 0 0.32 0 0 0</pose>
+        <geometry><cylinder><radius>0.022</radius><length>0.64</length></cylinder></geometry>
+      </collision>
+      <collision name="crossbar_collision">
+        <pose>0 0 0.66 0 0 0</pose>
+        <geometry><box><size>0.75 0.045 0.045</size></box></geometry>
+      </collision>
+      <collision name="housing_collision">
+        <pose>0 0 0.55 0 0 0</pose>
+        <geometry><box><size>0.40 0.075 0.16</size></box></geometry>
+      </collision>
+
+      <visual name="left_foot">
+        <pose>-0.34 0 0.025 0 0 0</pose>
+        <geometry><cylinder><radius>0.055</radius><length>0.05</length></cylinder></geometry>
+        <material><ambient>0.06 0.07 0.07 1</ambient><diffuse>0.12 0.14 0.14 1</diffuse></material>
+      </visual>
+      <visual name="right_foot">
+        <pose>0.34 0 0.025 0 0 0</pose>
+        <geometry><cylinder><radius>0.055</radius><length>0.05</length></cylinder></geometry>
+        <material><ambient>0.06 0.07 0.07 1</ambient><diffuse>0.12 0.14 0.14 1</diffuse></material>
+      </visual>
+      <visual name="left_post">
+        <pose>-0.34 0 0.32 0 0 0</pose>
+        <geometry><cylinder><radius>0.022</radius><length>0.64</length></cylinder></geometry>
+        <material><ambient>0.16 0.18 0.18 1</ambient><diffuse>0.28 0.31 0.31 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="right_post">
+        <pose>0.34 0 0.32 0 0 0</pose>
+        <geometry><cylinder><radius>0.022</radius><length>0.64</length></cylinder></geometry>
+        <material><ambient>0.16 0.18 0.18 1</ambient><diffuse>0.28 0.31 0.31 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="crossbar">
+        <pose>0 0 0.66 0 0 0</pose>
+        <geometry><box><size>0.75 0.045 0.045</size></box></geometry>
+        <material><ambient>0.12 0.14 0.14 1</ambient><diffuse>0.24 0.27 0.27 1</diffuse><specular>0.25 0.25 0.25 1</specular></material>
+      </visual>
+      <visual name="left_hanger">
+        <pose>-0.14 0 0.615 0 0 0</pose>
+        <geometry><box><size>0.025 0.035 0.07</size></box></geometry>
+        <material><ambient>0.06 0.07 0.07 1</ambient><diffuse>0.12 0.14 0.14 1</diffuse></material>
+      </visual>
+      <visual name="right_hanger">
+        <pose>0.14 0 0.615 0 0 0</pose>
+        <geometry><box><size>0.025 0.035 0.07</size></box></geometry>
+        <material><ambient>0.06 0.07 0.07 1</ambient><diffuse>0.12 0.14 0.14 1</diffuse></material>
+      </visual>
+      <visual name="housing">
+        <pose>0 0 0.55 0 0 0</pose>
+        <geometry><box><size>0.40 0.075 0.16</size></box></geometry>
+        <material><ambient>0.008 0.010 0.010 1</ambient><diffuse>0.016 0.020 0.020 1</diffuse><specular>0.10 0.10 0.10 1</specular></material>
+      </visual>
+      <visual name="red_lens">
+        <pose>-0.12 -0.044 0.55 1.570796 0 0</pose>
+        <geometry><cylinder><radius>0.045</radius><length>0.018</length></cylinder></geometry>
+        <material><ambient>0.045 0.003 0.003 1</ambient><diffuse>0.55 0.04 0.04 1</diffuse><specular>0.15 0.15 0.15 1</specular></material>
+        <plugin name="red_color_plugin" filename="libgazebo_ros_model_color.so">
+          <robotNamespace>/traffic_light</robotNamespace>
+          <serviceName>red_lens_color</serviceName>
+          <color>0.55 0.04 0.04 1</color>
+        </plugin>
+      </visual>
+      <visual name="yellow_lens">
+        <pose>0 -0.044 0.55 1.570796 0 0</pose>
+        <geometry><cylinder><radius>0.045</radius><length>0.018</length></cylinder></geometry>
+        <material><ambient>0.025 0.015 0.003 1</ambient><diffuse>0.55 0.40 0.04 1</diffuse><specular>0.15 0.15 0.15 1</specular></material>
+        <plugin name="yellow_color_plugin" filename="libgazebo_ros_model_color.so">
+          <robotNamespace>/traffic_light</robotNamespace>
+          <serviceName>yellow_lens_color</serviceName>
+          <color>0.55 0.40 0.04 1</color>
+        </plugin>
+      </visual>
+      <visual name="green_lens">
+        <pose>0.12 -0.044 0.55 1.570796 0 0</pose>
+        <geometry><cylinder><radius>0.045</radius><length>0.018</length></cylinder></geometry>
+        <material><ambient>0.003 0.045 0.004 1</ambient><diffuse>0.04 0.55 0.05 1</diffuse><specular>0.15 0.15 0.15 1</specular></material>
+        <plugin name="green_color_plugin" filename="libgazebo_ros_model_color.so">
+          <robotNamespace>/traffic_light</robotNamespace>
+          <serviceName>green_lens_color</serviceName>
+          <color>0.04 0.55 0.05 1</color>
+        </plugin>
+      </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,26 @@
+<launch>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"   value="$(find aic26_gazebo)/worlds/gazebo_test.world"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="paused"       value="false"/>
+    <arg name="gui"          value="true"/>
+    <arg name="headless"     value="false"/>
+    <arg name="debug"        value="false"/>
+    <arg name="verbose"      value="true"/>
+  </include>
+
+  <!-- 实时从 xacro 生成 robot_description -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(find aic26_description)/urdf/gazebo_car_union.xacro"/>
+
+  <!-- 将机器人 spawn 到 Gazebo，位置与原 armbot 一致 -->
+  <node name="spawn_armbot" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description -urdf -model armbot -x 1.70127 -y 1.67794 -z 0 -Y 3.152"
+        output="screen"/>
+
+  <!-- 发布 TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+        type="robot_state_publisher" output="screen"/>
+
+</launch>

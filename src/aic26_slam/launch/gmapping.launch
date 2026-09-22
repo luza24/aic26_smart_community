@@ -1,0 +1,32 @@
+<launch>
+  <!-- 强制添加静态发布者 -->
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="laser_tf"
+        args="0 0 0.265 0 0 0 base_footprint laser"/>
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="base_frame"   value="base_footprint"/>
+    <param name="odom_frame"   value="odom"/>
+    <param name="map_frame"    value="map"/>
+    <param name="scan_topic"   value="/scan"/>
+
+    <!-- 粒子数：场地不大，80 够了；想更精细可调到 150 -->
+    <param name="particles"    value="80"/>
+
+    <!-- 地图分辨率：0.05m 是常用值 -->
+    <param name="delta"        value="0.05"/>
+
+    <!-- 初始地图范围：你的场地是 4.2x4.2，给大一点 -->
+    <param name="xmin" value="-6"/>
+    <param name="ymin" value="-6"/>
+    <param name="xmax" value="6"/>
+    <param name="ymax" value="6"/>
+
+    <!-- 里程计噪声：仿真里可以调小 -->
+    <param name="linearUpdate"  value="0.10"/>
+    <param name="angularUpdate" value="0.10"/>
+    <param name="temporalUpdate" value="1.0"/>
+    <param name="resampleThreshold" value="0.5"/>
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz" output="screen"/>
+</launch>

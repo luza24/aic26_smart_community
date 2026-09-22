@@ -1,0 +1,27 @@
+<launch>
+    <!-- 1. 加载地图 -->
+    <node pkg="map_server" type="map_server" name="map_server"
+          args="$(find aic26_slam)/maps/nav.yaml" />
+
+    <!-- 2. AMCL 定位 -->
+    <node pkg="amcl" type="amcl" name="amcl">
+      <param name="use_map_topic" value="true" />
+      <remap from="scan" to="/scan" />   <!-- 换成你的激光话题名 -->
+      <!-- 初始位姿：车在 Gazebo 里 spawn 的坐标（地图坐标系） -->
+      <param name="initial_pose_x" value="1.703" />   <!-- 换成你车实际 spawn 的 x -->
+      <param name="initial_pose_y" value="1.678" />   <!-- 换成你车实际 spawn 的 y -->
+      <param name="initial_pose_a" value="3.1415926" />   <!-- 朝向角（弧度） -->
+    </node>
+
+    <!-- 3. move_base 导航 -->
+    <node pkg="move_base" type="move_base" name="move_base" respawn="false">
+      <rosparam file="$(find aic26_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find aic26_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find aic26_navigation)/config/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find aic26_navigation)/config/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find aic26_navigation)/config/dwa_local_planner_params.yaml" command="load" />
+    </node>
+
+    <!-- 4. RViz（可选，建议先开着看） -->
+    <node pkg="rviz" type="rviz" name="rviz"  />
+  </launch>
