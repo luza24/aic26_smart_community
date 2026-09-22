@@ -1,0 +1,30 @@
+TebLocalPlannerROS:
+    # 机器人本体
+    max_vel_x: 0.25
+    max_vel_x_backwards: 0.0
+    max_vel_theta: 0.8
+    acc_lim_x: 0.4
+    acc_lim_theta: 0.8
+
+    # 关键:忽略中间点的朝向,只跟踪位置 → 滑过路点不对正
+    global_plan_overwrite_orientation: true
+
+    # 到达判定(只对最终 goal 生效)
+    xy_goal_tolerance: 0.15
+    yaw_goal_tolerance: 0.2
+
+    # 轨迹前瞻与平滑
+    min_obstacle_dist: 0.05
+    inflation_dist: 0.20
+    max_global_plan_lookahead_dist: 3.0
+    feasibility_check_no_poses: 4
+
+    # 时间最优 → 尽量匀速滑过
+    weight_optimaltime: 1.0
+    weight_obstacle: 50.0
+    weight_viapoint: 1.0
+
+    # footprint 模型
+    footprint_model:
+      type: "polygon"
+      vertices:  [[-0.17, -0.15], [-0.17, 0.15], [0.17, 0.15], [0.17, -0.15]]

@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   actionlib
   move_base_msgs
+  nav_msgs
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -107,7 +109,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES aic26_navigation
-#  CATKIN_DEPENDS costmap_2d move_base rospy  actionlib move_base_msgs
+#  CATKIN_DEPENDS costmap_2d move_base rospy  actionlib move_base_msgs nav_msgs geometry_msgs
 #  DEPENDS system_lib
 )
 

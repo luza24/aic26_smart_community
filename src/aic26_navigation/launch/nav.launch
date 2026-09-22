@@ -19,7 +19,12 @@
       <rosparam file="$(find aic26_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
       <rosparam file="$(find aic26_navigation)/config/global_costmap_params.yaml" command="load" />
       <rosparam file="$(find aic26_navigation)/config/local_costmap_params.yaml" command="load" />
-      <rosparam file="$(find aic26_navigation)/config/dwa_local_planner_params.yaml" command="load" />
+      <rosparam file="$(find aic26_navigation)/config/teb_local_planner_params.yaml" command="load" />       
+      <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+      <param name="base_local_planner"  value="teb_local_planner/TebLocalPlannerROS" />
+      <param name="planner_frequency"   value="0.0" />
+      <param name="controller_frequency" value="10.0" />
+      <!--rosparam file="$(find aic26_navigation)/config/dwa_local_planner_params.yaml" command="load" /-->
     </node>
 
     <!-- 4. RViz（可选，建议先开着看） -->

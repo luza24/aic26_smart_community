@@ -1,8 +1,0 @@
-prefix=/root/catkin_ws/install
-
-Name: learn_para
-Description: Description of learn_para
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
